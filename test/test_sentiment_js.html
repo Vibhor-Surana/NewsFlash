@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Indicator Tests</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <style>
+        .test-container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .test-result {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .test-pass {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .test-fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .sample-article {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 1rem 0;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Sentiment Indicator Tests</h1>
+        
+        <div class="test-section">
+            <h2>Test 1: Sentiment Indicator Creation</h2>
+            <div id="test1-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 2: Sentiment Data Mapping</h2>
+            <div id="test2-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 3: Article Element with Sentiment</h2>
+            <div id="test3-results"></div>
+            <div id="test3-sample"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 4: Responsive Design</h2>
+            <div id="test4-results"></div>
+            <div id="test4-sample"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test 5: Tooltip Functionality</h2>
+            <div id="test5-results"></div>
+            <div id="test5-sample"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="static/js/app.js"></script>
+    
+    <script>
+        // Test framework
+        class SentimentTests {
+            constructor() {
+                this.newsApp = new NewsAssistant();
+                this.runAllTests();
+            }
+            
+            runAllTests() {
+                this.test1_sentimentIndicatorCreation();
+                this.test2_sentimentDataMapping();
+                this.test3_articleElementWithSentiment();
+                this.test4_responsiveDesign();
+                this.test5_tooltipFunctionality();
+            }
+            
+            logResult(testId, message, passed) {
+                const resultsDiv = document.getElementById(`${testId}-results`);
+                const resultDiv = document.createElement('div');
+                resultDiv.className = `test-result ${passed ? 'test-pass' : 'test-fail'}`;
+                resultDiv.innerHTML = `${passed ? '✓' : '✗'} ${message}`;
+                resultsDiv.appendChild(resultDiv);
+            }
+            
+            test1_sentimentIndicatorCreation() {
+                try {
+                    // Test positive sentiment
+                    const positiveIndicator = this.newsApp.createSentimentIndicator('positive');
+                    const hasPositiveClass = positiveIndicator.includes('sentiment-indicator positive');
+                    const hasSmileIcon = positiveIndicator.includes('fa-smile');
+                    const hasPositiveText = positiveIndicator.includes('Positive');
+                    
+                    this.logResult('test1', 'Positive sentiment indicator has correct class', hasPositiveClass);
+                    this.logResult('test1', 'Positive sentiment indicator has smile icon', hasSmileIcon);
+                    this.logResult('test1', 'Positive sentiment indicator has correct text', hasPositiveText);
+                    
+                    // Test negative sentiment
+                    const negativeIndicator = this.newsApp.createSentimentIndicator('negative');
+                    const hasNegativeClass = negativeIndicator.includes('sentiment-indicator negative');
+                    const hasFrownIcon = negativeIndicator.includes('fa-frown');
+                    const hasNegativeText = negativeIndicator.includes('Negative');
+                    
+                    this.logResult('test1', 'Negative sentiment indicator has correct class', hasNegativeClass);
+                    this.logResult('test1', 'Negative sentiment indicator has frown icon', hasFrownIcon);
+                    this.logResult('test1', 'Negative sentiment indicator has correct text', hasNegativeText);
+                    
+                    // Test neutral sentiment
+                    const neutralIndicator = this.newsApp.createSentimentIndicator('neutral');
+                    const hasNeutralClass = neutralIndicator.includes('sentiment-indicator neutral');
+                    const hasMehIcon = neutralIndicator.includes('fa-meh');
+                    const hasNeutralText = neutralIndicator.includes('Neutral');
+                    
+                    this.logResult('test1', 'Neutral sentiment indicator has correct class', hasNeutralClass);
+                    this.logResult('test1', 'Neutral sentiment indicator has meh icon', hasMehIcon);
+                    this.logResult('test1', 'Neutral sentiment indicator has correct text', hasNeutralText);
+                    
+                } catch (error) {
+                    this.logResult('test1', `Error in sentiment indicator creation: ${error.message}`, false);
+                }
+            }
+            
+            test2_sentimentDataMapping() {
+                try {
+                    // Test getSentimentData method
+                    const positiveData = this.newsApp.getSentimentData('positive');
+                    this.logResult('test2', 'Positive sentiment data has correct class', positiveData.class === 'positive');
+                    this.logResult('test2', 'Positive sentiment data has correct icon', positiveData.icon === 'fas fa-smile');
+                    this.logResult('test2', 'Positive sentiment data has correct text', positiveData.text === 'Positive');
+                    this.logResult('test2', 'Positive sentiment data has tooltip', positiveData.tooltip.includes('positive'));
+                    
+                    const negativeData = this.newsApp.getSentimentData('negative');
+                    this.logResult('test2', 'Negative sentiment data has correct class', negativeData.class === 'negative');
+                    this.logResult('test2', 'Negative sentiment data has correct icon', negativeData.icon === 'fas fa-frown');
+                    this.logResult('test2', 'Negative sentiment data has correct text', negativeData.text === 'Negative');
+                    this.logResult('test2', 'Negative sentiment data has tooltip', negativeData.tooltip.includes('negative'));
+                    
+                    const neutralData = this.newsApp.getSentimentData('neutral');
+                    this.logResult('test2', 'Neutral sentiment data has correct class', neutralData.class === 'neutral');
+                    this.logResult('test2', 'Neutral sentiment data has correct icon', neutralData.icon === 'fas fa-meh');
+                    this.logResult('test2', 'Neutral sentiment data has correct text', neutralData.text === 'Neutral');
+                    this.logResult('test2', 'Neutral sentiment data has tooltip', neutralData.tooltip.includes('neutral'));
+                    
+                    // Test fallback for unknown sentiment
+                    const unknownData = this.newsApp.getSentimentData('unknown');
+                    this.logResult('test2', 'Unknown sentiment falls back to neutral', unknownData.class === 'neutral');
+                    
+                } catch (error) {
+                    this.logResult('test2', `Error in sentiment data mapping: ${error.message}`, false);
+                }
+            }
+            
+            test3_articleElementWithSentiment() {
+                try {
+                    // Create test article with positive sentiment
+                    const testArticle = {
+                        title: "Amazing Tech Breakthrough",
+                        url: "https://example.com/test",
+                        summary: "This is a test article with positive sentiment.",
+                        source: "Test Source",
+                        date: new Date().toISOString(),
+                        sentiment: 'positive'
+                    };
+                    
+                    const articleElement = this.newsApp.createArticleElement(testArticle);
+                    
+                    // Check if article element contains sentiment indicator
+                    const hasSentimentIndicator = articleElement.innerHTML.includes('sentiment-indicator');
+                    const hasPositiveClass = articleElement.innerHTML.includes('sentiment-indicator positive');
+                    const hasArticleHeader = articleElement.innerHTML.includes('article-header');
+                    const hasMetaSection = articleElement.innerHTML.includes('article-meta-section');
+                    
+                    this.logResult('test3', 'Article element contains sentiment indicator', hasSentimentIndicator);
+                    this.logResult('test3', 'Article element has positive sentiment class', hasPositiveClass);
+                    this.logResult('test3', 'Article element has proper header structure', hasArticleHeader);
+                    this.logResult('test3', 'Article element has meta section for sentiment', hasMetaSection);
+                    
+                    // Display sample article
+                    const sampleDiv = document.getElementById('test3-sample');
+                    sampleDiv.innerHTML = '<h4>Sample Article with Positive Sentiment:</h4>';
+                    sampleDiv.appendChild(articleElement);
+                    
+                } catch (error) {
+                    this.logResult('test3', `Error in article element creation: ${error.message}`, false);
+                }
+            }
+            
+            test4_responsiveDesign() {
+                try {
+                    // Create test articles with different sentiments
+                    const testArticles = [
+                        { title: "Positive News", sentiment: 'positive', summary: "Good news!", source: "Test", date: new Date().toISOString() },
+                        { title: "Negative News", sentiment: 'negative', summary: "Bad news!", source: "Test", date: new Date().toISOString() },
+                        { title: "Neutral News", sentiment: 'neutral', summary: "Regular news!", source: "Test", date: new Date().toISOString() }
+                    ];
+                    
+                    const sampleDiv = document.getElementById('test4-sample');
+                    sampleDiv.innerHTML = '<h4>Sample Articles (Responsive Test):</h4>';
+                    
+                    testArticles.forEach(article => {
+                        const articleElement = this.newsApp.createArticleElement(article);
+                        sampleDiv.appendChild(articleElement);
+                    });
+                    
+                    // Test that CSS classes exist for responsive design
+                    const cssRules = Array.from(document.styleSheets)
+                        .flatMap(sheet => {
+                            try {
+                                return Array.from(sheet.cssRules || []);
+                            } catch (e) {
+                                return [];
+                            }
+                        })
+                        .map(rule => rule.selectorText)
+                        .filter(selector => selector);
+                    
+                    const hasResponsiveRules = cssRules.some(rule => 
+                        rule && rule.includes('@media') && rule.includes('sentiment-indicator')
+                    );
+                    
+                    this.logResult('test4', 'CSS contains responsive rules for sentiment indicators', hasResponsiveRules);
+                    this.logResult('test4', 'Sample articles created for visual testing', true);
+                    
+                } catch (error) {
+                    this.logResult('test4', `Error in responsive design test: ${error.message}`, false);
+                }
+            }
+            
+            test5_tooltipFunctionality() {
+                try {
+                    // Create test article
+                    const testArticle = {
+                        title: "Test Article for Tooltip",
+                        url: "https://example.com/tooltip-test",
+                        summary: "This article tests tooltip functionality.",
+                        source: "Test Source",
+                        date: new Date().toISOString(),
+                        sentiment: 'positive'
+                    };
+                    
+                    const articleElement = this.newsApp.createArticleElement(testArticle);
+                    
+                    // Check if tooltip elements are present
+                    const hasTooltip = articleElement.innerHTML.includes('sentiment-tooltip');
+                    const hasTooltipText = articleElement.innerHTML.includes('This article has a positive sentiment');
+                    
+                    this.logResult('test5', 'Article contains sentiment tooltip element', hasTooltip);
+                    this.logResult('test5', 'Tooltip has appropriate text content', hasTooltipText);
+                    
+                    // Display sample for manual tooltip testing
+                    const sampleDiv = document.getElementById('test5-sample');
+                    sampleDiv.innerHTML = '<h4>Hover over the sentiment indicator to test tooltip:</h4>';
+                    sampleDiv.appendChild(articleElement);
+                    
+                    this.logResult('test5', 'Sample article created for manual tooltip testing', true);
+                    
+                } catch (error) {
+                    this.logResult('test5', `Error in tooltip functionality test: ${error.message}`, false);
+                }
+            }
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SentimentTests();
+        });
+    </script>
+</body>
+</html>

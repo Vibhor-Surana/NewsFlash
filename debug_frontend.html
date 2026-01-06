@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Frontend</title>
+    <script>
+        // Simulate the displayNewsResults function
+        function testDisplayResults() {
+            console.log('Testing displayNewsResults...');
+            
+            // Mock data similar to what the backend returns
+            const mockResults = {
+                "technology": [
+                    {
+                        "title": "Test Tech Article 1",
+                        "url": "https://example.com/1",
+                        "summary": "This is a test summary for technology news article 1.",
+                        "source": "Test Source",
+                        "date": "2025-09-01"
+                    },
+                    {
+                        "title": "Test Tech Article 2", 
+                        "url": "https://example.com/2",
+                        "summary": "This is a test summary for technology news article 2.",
+                        "source": "Test Source 2",
+                        "date": "2025-09-01"
+                    }
+                ]
+            };
+            
+            console.log('Mock results:', mockResults);
+            
+            // Test the display logic
+            const welcomeMessage = document.getElementById('welcome-message');
+            const newsResults = document.getElementById('news-results');
+            
+            if (!welcomeMessage || !newsResults) {
+                console.error('Required elements not found!');
+                return;
+            }
+            
+            // Hide welcome message and show results
+            welcomeMessage.style.display = 'none';
+            newsResults.style.display = 'block';
+            newsResults.innerHTML = '';
+            
+            // Display news for each topic
+            Object.keys(mockResults).forEach(topic => {
+                const articles = mockResults[topic];
+                console.log(`Processing topic: ${topic}, articles:`, articles);
+                
+                const topicSection = document.createElement('div');
+                topicSection.className = 'news-topic-section';
+                topicSection.innerHTML = `
+                    <h3>${topic.toUpperCase()}</h3>
+                    <div class="articles">
+                        ${articles.map(article => `
+                            <div class="article">
+                                <h4>${article.title}</h4>
+                                <p>${article.summary}</p>
+                                <small>Source: ${article.source} | Date: ${article.date}</small>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                newsResults.appendChild(topicSection);
+            });
+            
+            console.log('Results displayed successfully!');
+        }
+        
+        window.onload = function() {
+            console.log('Page loaded, running test...');
+            testDisplayResults();
+        };
+    </script>
+</head>
+<body>
+    <h1>Frontend Debug Test</h1>
+    
+    <div id="welcome-message" style="display: block;">
+        <p>Welcome message (should be hidden after test)</p>
+    </div>
+    
+    <div id="news-results" style="display: none;">
+        <!-- Results will be inserted here -->
+    </div>
+    
+    <button onclick="testDisplayResults()">Run Test Again</button>
+    
+    <div id="console-output">
+        <h3>Console Output:</h3>
+        <div id="console-log"></div>
+    </div>
+    
+    <script>
+        // Capture console.log output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleDiv = document.getElementById('console-log');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            consoleDiv.innerHTML += '<div style="color: blue;">' + args.join(' ') + '</div>';
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            consoleDiv.innerHTML += '<div style="color: red;">ERROR: ' + args.join(' ') + '</div>';
+        };
+    </script>
+</body>
+</html>

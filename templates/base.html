@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NewsFlash - AI-Powered News Assistant{% endblock %}</title>
+
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description"
+        content="NewsFlash - Your AI-powered news assistant. Discover, summarize, and listen to the latest news with intelligent conversation and text-to-speech.">
+    <meta name="keywords" content="news, AI, assistant, text-to-speech, real-time, search, summaries">
+    <meta name="author" content="NewsFlash">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NewsFlash - AI-Powered News Assistant">
+    <meta property="og:description"
+        content="Discover, summarize, and listen to the latest news with intelligent conversation and text-to-speech.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="NewsFlash - AI-Powered News Assistant">
+    <meta property="twitter:description"
+        content="Discover, summarize, and listen to the latest news with intelligent conversation and text-to-speech.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="theme-light" data-theme-root>
+    <!-- Global App Header -->
+    <header class="app-header d-flex align-items-center justify-content-between px-3">
+        <div class="d-flex align-items-center gap-2 app-brand">
+            <div>
+                <i class="fas fa-newspaper me-2"></i>
+                <strong class="brand-name">NewsFlash</strong><br>
+                <small class="brand-tagline">Your intelligent news companion</small>
+            </div>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <div class="dropdown">
+                <button class="btn btn-outline-light btn-sm dropdown-toggle language-btn" type="button" 
+                        id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-globe me-1"></i>
+                    <span class="language-text">English</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end language-menu" aria-labelledby="languageDropdown">
+                    <li><h6 class="dropdown-header">Select Language</h6></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <!-- Languages will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid app-container h-100 p-0">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>
