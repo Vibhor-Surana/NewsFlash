@@ -10,7 +10,6 @@ A sophisticated, production-ready news aggregation platform that combines real-t
 [![Flask](https://img.shields.io/badge/Flask-3.1.2-000000?style=flat&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![LangChain](https://img.shields.io/badge/LangChain-0.3.27-4CAF50?style=flat&logo=chainlink&logoColor=white)](https://www.langchain.com/)
 [![Google Gemini](https://img.shields.io/badge/Gemini-1.5%20Flash-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](LICENSE)
 
 [Features](#-key-features) • [Demo](#-demo) • [Installation](#-installation) • [Architecture](#-architecture) • [API Documentation](#-api-documentation) • [Contributing](#-contributing)
 
@@ -1080,11 +1079,7 @@ We welcome contributions! Here's how you can help:
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Design Inspiration**: BBC, CNN, Reuters, The Guardian
 - **AI Technology**: Google Gemini, LangChain, LangGraph
