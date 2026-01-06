@@ -958,37 +958,7 @@ We welcome contributions! Here's how you can help:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2026 Vibhor Surana
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 ### Technologies & Services
 - **Google Gemini**: Powerful AI model for summarization and sentiment analysis
@@ -1000,27 +970,6 @@ SOFTWARE.
 ### Inspiration
 - News websites: BBC, CNN, Reuters for design inspiration
 - Open-source community for countless tools and libraries
-
-### Special Thanks
-- Contributors and testers who helped improve the application
-- The Python and JavaScript communities for excellent documentation
-
----
-
-## 📞 Support & Contact
-
-### Get Help
-
-- **Issues**: [GitHub Issues](https://github.com/Vibhor-Surana/NewsFlash/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Vibhor-Surana/NewsFlash/discussions)
-- **Email**: Create an issue for support requests
-
-### Quick Links
-
-- 📚 [Documentation](https://github.com/Vibhor-Surana/NewsFlash/wiki)
-- 🐛 [Report Bug](https://github.com/Vibhor-Surana/NewsFlash/issues/new)
-- 💡 [Request Feature](https://github.com/Vibhor-Surana/NewsFlash/issues/new)
-- 🔄 [View Changelog](CHANGELOG.md)
 
 ---
 
@@ -1058,27 +1007,7 @@ SOFTWARE.
 
 ---
 
-## 📊 Project Statistics
-
-- **Lines of Code**: ~15,000+
-- **Languages**: Python (Backend), JavaScript (Frontend)
-- **Test Coverage**: 85%+
-- **Supported Languages**: 3 (English, Hindi, Marathi)
-- **API Integrations**: 4 (Gemini, LangSmith, DuckDuckGo, gTTS)
-- **Database Models**: 2 (ConversationSession, NewsArticle)
-- **API Endpoints**: 10+
-
----
-
 <div align="center">
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Vibhor-Surana/NewsFlash&type=Date)](https://star-history.com/#Vibhor-Surana/NewsFlash&Date)
-
----
 
 **Built with ❤️ by [Vibhor Surana](https://github.com/Vibhor-Surana)**
 
